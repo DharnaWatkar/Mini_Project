@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blood Group Compatibility</title>
+    
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background: #d32f2f;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+      }
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 950px;
+        margin: 50px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h2 {
+        color: #d32f2f;
+        margin-bottom: 20px;
+      }
+      .blood-group-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+      .blood-group-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 48%; /* Each section takes 48% of the width */
+      }
+      .blood-group-section img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+      .blood-group-section table {
+        width: 100%;
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        padding: 15px;
+        text-align: center;
+      }
+      th {
+        background-color: #d32f2f;
+        color: white;
+      }
+      td {
+        background-color: #f9f9f9;
+      }
+      footer {
+        margin-top: 50px;
+        padding: 10px;
+        background: #333;
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Blood Group Compatibility</h1>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('home') }}"></a>Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+
+          <li><a href="{{ url_for('scan') }}">Scan Fingerprint</a></li>
+          <li><a href="{{ url_for('results') }}">Compatibility Check</a></li>
+          <li><a href="{{ url_for('faq') }}">Health Insights</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- Row for A+ and A- -->
+      <div class="blood-group-row">
+        <div class="blood-group-section">
+          <h3>A+ Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/A+.png') }}" alt="A+ Blood Group" />
+          <table>
+            <tr>
+              <th>Receiver</th>
+              <th>Donor</th>
+            </tr>
+            <tr>
+              <td>A+, AB+</td>
+              <td>A+, A-, O+, O-</td>
+            </tr>
+            <tr>
+              <td>B+, AB+</td>
+              <td>B+, B-, O+, O-</td>
+            </tr>
+            <tr>
+              <td>AB+</td>
+              <td>AB+, AB-, A+, A-, B+, B-, O+, O-</td>
+            </tr>
+          </table>
+        </div>
+        <div class="blood-group-section">
+          <h3>A- Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/A-.png') }}"alt="A- Blood Group" />
+          <table>
+            <tr>
+              <th>Receiver</th>
+              <th>Donor</th>
+            </tr>
+            <tr>
+              <td>A+, A-</td>
+              <td>A-, O-</td>
+            </tr>
+            <tr>
+              <td>B+, AB+</td>
+              <td>B-, O-</td>
+            </tr>
+            <tr>
+              <td>AB+</td>
+              <td>AB-, A-, B-, O-</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Row for B+ and B- -->
+      <div class="blood-group-row">
+        <div class="blood-group-section">
+          <h3>B+ Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/B+.png') }}" alt="B+ Blood Group" />
+          <table>
+            <tr>
+              <th>Receiver</th>
+              <th>Donor</th>
+            </tr>
+            <tr>
+              <td>B+, AB+</td>
+              <td>B+, B-, O+, O-</td>
+            </tr>
+            <tr>
+              <td>AB+</td>
+              <td>AB+, AB-, B+, B-, O+, O-</td>
+            </tr>
+          </table>
+        </div>
+        <div class="blood-group-section">
+          <h3>B- Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/B-.png') }}" alt="B- Blood Group" />
+          <table>
+            <tr>
+              <th>Receiver</th>
+              <th>Donor</th>
+            </tr>
+            <tr>
+              <td>B+, B-</td>
+              <td>B-, O-</td>
+            </tr>
+            <tr>
+              <td>AB+</td>
+              <td>AB-, B-, O-</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Row for O+ and O- -->
+      <div class="blood-group-row">
+        <div class="blood-group-section">
+          <h3>O+ Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/O+.png') }}" alt="O+ Blood Group" />
+          <table>
+            <tr>
+              <th>Receiver</th>
+              <th>Donor</th>
+            </tr>
+            <tr>
+              <td>A+, B+, AB+, O+</td>
+              <td>O+, O-</td>
+            </tr>
+          </table>
+        </div>
+        <div class="blood-group-section">
+          <h3>O- Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/O-.png') }}" alt="O- Blood Group" />
+          <table>
+            <tr>
+              <th>Receiver</th>
+              <th>Donor</th>
+            </tr>
+            <tr>
+              <td>All Blood Groups</td>
+              <td>O-</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Row for AB+ and AB- -->
+      <div class="blood-group-row">
+        <div class="blood-group-section">
+          <h3>AB+ Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/AB+.png') }}" alt="AB+ Blood Group" />
+          <table>
+            <tr>
+              <th>Receiver</th>
+              <th>Donor</th>
+            </tr>
+            <tr>
+              <td>All Blood Groups</td>
+              <td>AB+, AB-, A+, A-, B+, B-, O+, O-</td>
+            </tr>
+          </table>
+        </div>
+        <div class="blood-group-section">
+          <h3>AB- Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/AB-.png') }}" alt="AB- Blood Group" />
+          <table>
+            <tr>
+              <th>Receiver</th>
+              <th>Donor</th>
+            </tr>
+            <tr>
+              <td>AB-, AB+</td>
+              <td>AB-, A-, B-, O-</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Blood Group Detection System. All rights reserved.</p>
+    </footer>
+  </body>
+  </html>

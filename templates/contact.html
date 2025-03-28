@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+    <!-- Adding Font Awesome for icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background: #d32f2f;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+      }
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h2 {
+        color: #d32f2f;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .contact-info,
+      .contact-form {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+      .contact-info div,
+      .contact-form div {
+        width: 48%;
+      }
+      .contact-info h3,
+      .contact-form h3 {
+        color: #d32f2f;
+        margin-bottom: 15px;
+      }
+      .contact-info p,
+      .contact-form p {
+        color: #555;
+        line-height: 1.6;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .contact-form button {
+        padding: 10px 20px;
+        background-color: #d32f2f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .contact-form button:hover {
+        background-color: #b71c1c;
+      }
+      .contact-info i {
+        color: #d32f2f;
+        font-size: 24px;
+        margin-right: 10px;
+      }
+      footer {
+        margin-top: 50px;
+        padding: 10px;
+        background: #333;
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Blood Group Detection</h1>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('home') }}"></a>Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+
+          <li><a href="{{ url_for('scan') }}">Scan Fingerprint</a></li>
+          <li><a href="{{ url_for('results') }}">Compatibility Check</a></li>
+          <li><a href="{{ url_for('faq') }}">Health Insights</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h2>Get in Touch</h2>
+
+      <div class="contact-info">
+        <div>
+          <h3><i class="fas fa-map-marker-alt"></i> Our College</h3>
+          <p>Government College of Engineering , Nagpur</p>
+          <h3><i class="fas fa-phone-alt"></i> Phone</h3>
+          <p>+1 234 567 890</p>
+          <h3><i class="fas fa-envelope"></i> Email</h3>
+          <p>support@bloodgroupdetector.com</p>
+        </div>
+        <div>
+          <h3>Business Hours</h3>
+          <p>Monday to Friday: 9:00 AM - 6:00 PM</p>
+          <p>Saturday: 10:00 AM - 2:00 PM</p>
+          <p>Sunday: Closed</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Blood Group Detection System. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

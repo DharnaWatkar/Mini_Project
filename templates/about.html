@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crimsanity</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background: #d32f2f;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+      }
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+      }
+      h2 {
+        color: #d32f2f;
+      }
+      p {
+        line-height: 1.6;
+        color: #333;
+      }
+      .team-section {
+        text-align: center;
+        margin-top: 50px;
+      }
+      .team-members {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .member {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 200px;
+      }
+      .member img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .member h3 {
+        margin: 10px 0 5px;
+        color: #d32f2f;
+      }
+      footer {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Blood Group Detection</h1>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('home') }}"></a>Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+
+          <li><a href="{{ url_for('scan') }}">Scan Fingerprint</a></li>
+          <li><a href="{{ url_for('results') }}">Compatibility Check</a></li>
+          <li><a href="{{ url_for('faq') }}">Health Insights</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        Welcome to our Blood Group Detection System. Our mission is to provide
+        an innovative and efficient way to detect blood groups using advanced
+        fingerprint scanning technology.
+      </p>
+      <p>
+        Using cutting-edge AI and biometric analysis, our system ensures
+        accurate and quick results, helping individuals learn about their blood
+        type effortlessly.
+      </p>
+      <p>
+        We are committed to enhancing healthcare accessibility and making blood
+        group detection easier and more convenient for everyone.
+      </p>
+    </div>
+
+    <section class="team-section">
+      <h2>Meet Our Team</h2>
+      <div class="team-members">
+        <div class="member">
+          <h3>Dharna Watkar</h3>
+          <p>3rd year Btech</p>
+        </div>
+        <div class="member">
+          <h3>Ayushi Singh</h3>
+          <p>3rd year Btech</p>
+        </div>
+        <div class="member">
+          <h3>Aditya Barad</h3>
+          <p>3rd year Btech</p>
+        </div>
+        <div class="member">
+          <h3>Sanika Jaolekar</h3>
+          <p>3rd year Btech</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <h4>&copy; 2025 Blood Group Detection System. All rights reserved.</h4>
+    </footer>
+  </body>
+</html>

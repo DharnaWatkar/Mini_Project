@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scan Fingerprint - Blood Group Detection</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background: #d32f2f;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+      }
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      h2 {
+        color: #d32f2f;
+        margin-bottom: 20px;
+      }
+      .scanner-area {
+        width: 60%;
+        text-align: center;
+      }
+      .scanner img {
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+      }
+      .scan-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #d32f2f;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      .scan-button:hover {
+        background: #b71c1c;
+      }
+      #result {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #333;
+      }
+      .upload-section {
+        margin-top: 30px;
+      }
+      .upload-section input {
+        margin-bottom: 10px;
+      }
+      .uploaded-image {
+        margin-top: 20px;
+        max-width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      .side-images {
+        width: 30%;
+        text-align: center;
+      }
+      .side-images img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin: 10px 0;
+        border-radius: 8px;
+      }
+      footer {
+        margin-top: 20px;
+        padding: 10px;
+        background: #333;
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Blood Group Detection</h1>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('home') }}"></a>Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+
+          <li><a href="{{ url_for('scan') }}">Scan Fingerprint</a></li>
+          <li><a href="{{ url_for('results') }}">Compatibility Check</a></li>
+          <li><a href="{{ url_for('faq') }}">Health Insights</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="side-images">
+        <img src="{{ url_for('static', filename='images/3.jpeg') }}" alt="Image Left 1" />
+      </div>
+
+      <div class="scanner-area">
+        <h2>Scan Your Fingerprint</h2>
+
+        <div class="upload-section">
+          <h3>Upload Scanned Fingerprint Image</h3>
+          <input
+            type="file"
+            id="fingerprintUpload"
+            accept="image/*"
+            onchange="previewImage(event)"
+          />
+
+          <img
+            id="uploadedImage"
+            class="uploaded-image"
+            src=""
+            alt="Uploaded Fingerprint"
+            style="display: none"
+          />
+        </div>
+        <button class="scan-button" onclick="scanFingerprint()">
+          Start Scan
+        </button>
+
+        <p id="result"></p>
+      </div>
+
+      <div class="side-images">
+        <img src="{{ url_for('static', filename='images/4.avif') }}" alt="Image Right 1" />
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Blood Group Detection System. All rights reserved.</p>
+    </footer>
+  </body>
+  <script>
+
+  function previewImage(event) {
+    // Get the uploaded image file
+    const file = event.target.files[0];
+    
+    // Show the uploaded image
+    const reader = new FileReader();
+    reader.onload = function () {
+      const imgElement = document.getElementById("uploadedImage");
+      imgElement.src = reader.result;
+      imgElement.style.display = "block"; // Display image after upload
+    };
+    
+    if (file) {
+      reader.readAsDataURL(file);  // Convert the image to base64
+    }
+  }
+  
+  function scanFingerprint() {
+    // Get the image file from the input element
+    const fileInput = document.getElementById("fingerprintUpload");
+    const file = fileInput.files[0];
+  
+    if (!file) {
+      alert("Please upload a fingerprint image first.");
+      return;
+    }
+  
+    // Create a FormData object to send the image file
+    const formData = new FormData();
+    formData.append("file", file);
+  
+    // Make a POST request to the Flask API
+    fetch("http://127.0.0.1:5000/predict", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response
+        if (data.prediction) {
+          const resultText = `Predicted Blood Group: ${data.prediction}`;
+          document.getElementById("result").innerText = resultText;
+        } else {
+          document.getElementById("result").innerText = "Error: " + data.error;
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        document.getElementById("result").innerText = "An error occurred during the scan.";
+      });
+  }
+</script>
+
+</html>

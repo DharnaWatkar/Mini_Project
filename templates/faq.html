@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Insights</title>
+    <link rel="stylesheet" href="styles.css" />
+   
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background: #d32f2f;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+      }
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      .con img {
+        display: block;
+        margin: 0 auto;
+        width: 300px;
+        height: auto;
+      }
+      h2 {
+        color: #d32f2f;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .insights-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        margin-top: 30px;
+      }
+      .insight-box {
+        background-color: #fff;
+        width: 48%;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      .insight-box h3 {
+        color: #d32f2f;
+        margin-bottom: 15px;
+      }
+      .insight-box p {
+        color: #555;
+        line-height: 1.6;
+      }
+      .insight-box img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+      footer {
+        margin-top: 50px;
+        padding: 10px;
+        background: #333;
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Blood Group Detection</h1>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('home') }}"></a>Home</a></li>
+          <li><a href="{{ url_for('about') }}">About</a></li>
+
+          <li><a href="{{ url_for('scan') }}">Scan Fingerprint</a></li>
+          <li><a href="{{ url_for('results') }}">Compatibility Check</a></li>
+          <li><a href="{{ url_for('faq') }}">Health Insights</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h2>Explore Health Insights Based on Your Blood Group</h2>
+      <div class="con">
+        <img src="{{ url_for('static', filename='images/5.webp') }}" />
+      </div>
+
+      <!-- Blood Group Health Insights Row -->
+      <div class="insights-row">
+        <div class="insight-box">
+          <h3>Health Tips for A Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/AA.png') }}" alt="A Blood Group" />
+          <p>
+            People with A blood group tend to have higher levels of stress, and
+            a well-balanced diet with lots of vegetables and whole grains is
+            beneficial. It’s also essential to engage in calming exercises like
+            yoga and meditation to manage stress.
+          </p>
+        </div>
+        <div class="insight-box">
+          <h3>Diet and Exercise for A Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/A blood.webp') }}" alt="Diet and Exercise for A Blood Group" />
+          <p>
+            For A blood group individuals, a plant-based diet is ideal.
+            Incorporating foods like leafy greens, beans, and organic meats can
+            improve overall health. Gentle exercise like walking or swimming can
+            help maintain fitness.
+          </p>
+        </div>
+      </div>
+
+      <!-- Blood Group Health Insights Row -->
+      <div class="insights-row">
+        <div class="insight-box">
+          <h3>Health Tips for B Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/BB.jpg') }}" alt="B Blood Group" />
+          <p>
+            People with blood type B tend to be adaptable and well-balanced.
+            They thrive on a balanced diet and benefit from moderate-intensity
+            exercises like cycling, running, or tennis. They should also avoid
+            excessive stress and focus on a balanced work-life routine.
+          </p>
+        </div>
+        <div class="insight-box">
+          <h3>Diet and Exercise for B Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/B blood.webp') }}" alt="Diet and Exercise for B Blood Group" />
+          <p>
+            The B blood group benefits from a diet that includes dairy, eggs,
+            and meat. A good exercise regimen includes aerobic exercises, as
+            well as strength training. B blood group individuals also benefit
+            from sports like tennis or badminton.
+          </p>
+        </div>
+      </div>
+
+      <!-- Blood Group Health Insights Row -->
+      <div class="insights-row">
+        <div class="insight-box">
+          <h3>Health Tips for O Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/OO.jpg') }}" alt="O Blood Group" />
+          <p>
+            Individuals with O blood type are generally energetic and tend to
+            thrive on a high-protein diet. Regular exercise, especially
+            high-intensity workouts such as strength training and running, are
+            ideal for this group.
+          </p>
+        </div>
+        <div class="insight-box">
+          <h3>Diet and Exercise for O Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/O blood.webp') }}" alt="Diet and Exercise for O Blood Group" />
+          <p>
+            The O blood group should focus on a high-protein, low-carbohydrate
+            diet that includes lean meats, fish, and vegetables. Intense
+            exercises like weight training and martial arts are recommended for
+            optimal fitness.
+          </p>
+        </div>
+      </div>
+
+      <!-- Blood Group Health Insights Row -->
+      <div class="insights-row">
+        <div class="insight-box">
+          <h3>Health Tips for AB Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/ABAB.jpg') }}" alt="AB Blood Group" />
+          <p>
+            The AB blood group is a mix of A and B, which means individuals
+            should maintain a balanced diet. They should avoid overeating and
+            focus on eating lean meats, fruits, and vegetables. AB individuals
+            are also highly sensitive to stress, so mindfulness and relaxation
+            techniques are essential.
+          </p>
+        </div>
+        <div class="insight-box">
+          <h3>Diet and Exercise for AB Blood Group</h3>
+          <img src="{{ url_for('static', filename='images/AB blood.webp') }}" alt="Diet and Exercise for AB Blood Group" />
+          <p>
+            For AB blood group, a balanced diet of meat, dairy, and leafy greens
+            is ideal. A combination of cardio exercises and strength training
+            works well to improve fitness levels, while keeping stress levels
+            under control with relaxation techniques.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Blood Group Detection System. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
