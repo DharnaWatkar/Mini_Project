@@ -39,7 +39,7 @@ def predict():
 
         img_file = BytesIO()
 
-        file_stream.save(file_stream)
+       file_stream.save(img_file)
 
         img_file.seek(0)
         
