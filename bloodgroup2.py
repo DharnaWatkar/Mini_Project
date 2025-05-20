@@ -12,8 +12,10 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras.layers import Dense, Flatten, Dropout, GlobalAveragePooling2D
-from tensorflow.keras.models import Model
+from tensorflow.keras.models import Model , load_model
 from tensorflow.keras.optimizers import Adam
+import numpy as np
+import cv2
 import os
 
 # ✅ Mount Google Drive
@@ -73,28 +75,28 @@ model.compile(optimizer=Adam(learning_rate=0.0001), loss='categorical_crossentro
 model.fit(train_data, validation_data=val_data, epochs=10)
 
 # ✅ Save Model
-model.save("/content/drive/MyDrive/blood_group_classifier.h5")
+model.save("/content/drive/MyDrive/blood_group_classifier1.keras")
 print("✅ Model saved successfully!")
 
 # =========================
 # ✅ Prediction Function
 # =========================
 def predict_blood_group(image_path, model_path="/content/drive/MyDrive/blood_group_classifier.h5"):
-    # Load trained model
-    model = load_model("/content/drive/MyDrive/blood_group_classifier.h5")
+    model = load_model(model_path)  # Load the trained model
 
     # Load and preprocess the image
     img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     img = cv2.resize(img, (128, 128))
-    img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)  # Convert grayscale to 3 channels
+    img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)  # Convert grayscale to RGB
     img = img / 255.0  # Normalize
-
     img = np.expand_dims(img, axis=0)  # Add batch dimension
 
     # Predict
     prediction = model.predict(img)
-    class_idx = np.argmax(prediction)
-    class_labels = list(train_data.class_indices.keys())  # Get class labels
+    print("Raw model output:", prediction)  # Debugging step
+
+    class_idx = np.argmax(prediction[0])  # Ensure correct shape handling
+    class_labels = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]  # Define class labels
 
     return class_labels[class_idx]
 
